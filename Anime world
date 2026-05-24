@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমার ওয়েবসাইট</title>
+    <style>
+        /* আপনার মনের মতো কালার ও ডিজাইন এখানে সেট করা */
+        :root {
+            --bg: #ffffff;
+            --accent: #0070f3;
+            --accent-hover: #0051a8;
+            --text: #333333;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+        .content {
+            padding: 40px;
+            height: 2000px; /* পেজটি বড় করা হলো যাতে স্ক্রল করা যায় */
+            background: linear-gradient(to bottom, #f0f0f0, #dcdcdc);
+        }
+        /* আপনার স্ক্রল বাটনের CSS ডিজাইন */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: none; /* শুরুতে লুকিয়ে থাকবে */
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 150;
+            font-size: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background-color 150ms ease, transform 150ms ease;
+        }
+        #scrollTopBtn:hover {
+            background-color: var(--accent-hover);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <h1> welcome to anime world!</h1>
+        <p>নিচের দিকে স্ক্রল করে নামুন, তাহলেই আপনার সেই 'Scroll to Top' বাটনটি দেখতে পাবেন...</p>
+    </div>
+
+    <button id="scrollTopBtn" onclick="scrollToTop()" aria-label="Scroll to top">▲</button>
+
+    <script>
+        const btn = document.getElementById('scrollTopBtn');
+
+        // ৪০০ পিক্সেল নিচে নামলে বাটন দেখাবে
+        window.onscroll = function() {
+            if (window.scrollY > 400) {
+                btn.style.display = 'flex';
+            } else {
+                btn.style.display = 'none';
+            }
+        };
+
+        // ক্লিক করলে স্মুথলি উপরে উঠবে
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
